@@ -20,14 +20,11 @@ impl World {
     }
 
     pub fn update(&mut self) {
-        self.camera.pitch = self.camera.pitch + 0.02;
+        self.camera.pitch = self.camera.pitch + 0.08;
+        self.camera.roll = self.camera.roll + 0.08;
         self.scene[0].radius -= 0.01;
         let Point(_, y, _) = self.scene[1].center;
-        if y < 3. {
-            self.scene[1].center = self.scene[1].center + Point(0., 0.1, 0.1);
-        } else if y > -3. {
-            self.scene[1].center = self.scene[1].center - Point(0., 0.1, 0.1);
-        };
+        if y < 199. {self.scene[1].center = self.scene[1].center + Point(0., 0.1, 0.1);}
         self.scene[1].center = self.scene[1].center + Point(0., 0.1, 0.1);
         self.lights[1].intensity -= 0.005;
         self.lights[0].intensity -= 0.005;
